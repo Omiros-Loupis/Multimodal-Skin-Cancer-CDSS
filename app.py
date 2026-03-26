@@ -546,7 +546,10 @@ def generate_report(patient_name, age, gender, site, image_pil, heatmap_np, top3
         buf = BytesIO()
         doc = SimpleDocTemplate(buf, pagesize=A4,
                                 leftMargin=40, rightMargin=40,
-                                topMargin=40, bottomMargin=40)
+                                topMargin=40, bottomMargin=40,
+                                title=f'DermAI Report · {patient_name}',
+                                author='DermAI CDSS',
+                                subject='Ιατρική Αναφορά Δερματοσκόπησης')
         W = A4[0] - 80  # usable width
 
         def style(name, font='DejaVu', size=11, bold=False, color=colors.HexColor('#1a1a2e'),
@@ -558,8 +561,8 @@ def generate_report(patient_name, age, gender, site, image_pil, heatmap_np, top3
                 alignment={'LEFT':0,'CENTER':1,'RIGHT':2}.get(align,0),
                 spaceAfter=space_after)
 
-        title_s    = style('title',   size=18, bold=True,  color=colors.HexColor('#0d3b66'), align='CENTER', space_after=4)
-        subtitle_s = style('sub',     size=10, color=colors.HexColor('#555555'), align='CENTER', space_after=16)
+        title_s    = style('title',   size=18, bold=True,  color=colors.HexColor('#0d3b66'), align='CENTER', space_after=10)
+        subtitle_s = style('sub',     size=10, color=colors.HexColor('#555555'), align='CENTER', space_after=20)
         section_s  = style('section', size=13, bold=True,  color=colors.HexColor('#0d3b66'), space_after=6)
         body_s     = style('body',    size=11, space_after=3)
         label_s    = style('label',   size=11, bold=True,  space_after=3)
@@ -569,6 +572,7 @@ def generate_report(patient_name, age, gender, site, image_pil, heatmap_np, top3
 
         # ── Τίτλος ─────────────────────────────────────────────────────────────
         story.append(Paragraph('Ιατρική Αναφορά · DermAI CDSS', title_s))
+        story.append(Spacer(1, 6))
         story.append(Paragraph(f'Ημερομηνία: {datetime.now().strftime("%d/%m/%Y %H:%M")}', subtitle_s))
 
         # ── Στοιχεία ασθενούς ──────────────────────────────────────────────────
