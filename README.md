@@ -1,67 +1,48 @@
-Multimodal Skin Cancer CDSS 🩺🔬
-Clinical Decision Support System using Deep Learning & Explainable AI (XAI)
-This repository contains a state-of-the-art Clinical Decision Support System (CDSS) designed to assist dermatologists in the automated classification of skin lesions. The system leverages Multimodal Data Fusion (Images + Clinical Metadata) to provide high-accuracy diagnostic suggestions.
+# DermAI 🔬 - Multimodal Clinical Decision Support System (CDSS) for Skin Lesions
 
-🌟 Key Features
-Multimodal AI Architecture: Combines a ResNet18 (Computer Vision) with an MLP (Tabular Data) to analyze both dermoscopic images and patient metadata (Age, Sex, Anatomical Site).
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-EE4C2C)
+![Streamlit](https://img.shields.io/badge/Streamlit-UI-FF4B4B)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Explainable AI (Grad-CAM): Generates real-time heatmaps to visualize which morphological features the AI focused on for its decision.
+**DermAI** is an end-to-end multimodal Clinical Decision Support System (CDSS) designed to assist dermatologists in classifying skin lesions. Developed as part of a B.Sc. Thesis in Applied Informatics at the University of Macedonia (PAMAK).
 
-Content-Based Image Retrieval (CBIR): Automatically retrieves and displays the top 3 most visually similar historical cases from a database of 2,000 confirmed biopsies.
+This project goes beyond simple image classification by combining **Deep Learning (ResNet18)** with **Clinical Metadata**, implementing **Explainable AI (Grad-CAM)**, and featuring a **Content-Based Image Retrieval (CBIR)** system, all wrapped in a modern web interface.
 
-Quality Control Module: Built-in OpenCV filters to detect and reject blurry or underexposed images before analysis.
+## 🌟 Key Features
 
-Automated Medical Reporting: Generates a professional PDF report including patient data, AI predictions, and Grad-CAM visualizations.
+* **Multimodal Classification:** Fuses image data with patient clinical metadata (Age, Sex, Anatomical Site) to predict 9 different classes of skin lesions based on the ISIC 2019 dataset.
+* **Explainable AI (XAI):** Utilizes Grad-CAM to generate heatmaps, showing doctors exactly which parts of the lesion the neural network focused on to make its prediction.
+* **Content-Based Image Retrieval (CBIR):** Extracts feature vectors (512-dim) using ResNet18 to find and display the top 3 most visually similar verified cases from the database.
+* **Automated Medical Reporting:** Generates professional, downloadable PDF reports containing patient data, predictions, heatmaps, and medical disclaimers.
+* **Apple Silicon Optimized:** Native support for Apple M-series chips (MPS) for accelerated training and inference.
 
-🛠️ Tech Stack
-Deep Learning: PyTorch, Torchvision
+## 📸 Interface Showcase
 
-Frontend/UI: Streamlit
+| Dashboard & Prediction | Explainability (Grad-CAM) & CBIR |
+| :---: | :---: |
+| <img src="screenshot_1.png" width="400"> | <img src="screenshot_2.png" width="400"> |
 
-Computer Vision: OpenCV, PIL
+## 🏗️ Architecture & Methodologies
+* **Vision Model:** `ResNet18` (Pre-trained on ImageNet, fine-tuned).
+* **Data Fusion:** Late fusion of CNN feature maps with One-Hot Encoded / Scaled clinical metadata.
+* **UI Framework:** `Streamlit`.
+* **PDF Generation:** `ReportLab`.
+* **Preprocessing:** Implements "DullRazor" logic for digital hair removal via OpenCV.
 
-Explainability: PyTorch-Grad-CAM
+## 📊 Dataset & Evaluation
 
-Database/Similarity: Scikit-Learn (Cosine Similarity)
+The model was trained on the **ISIC 2019 Dataset**. Due to the heavy class imbalance of the dataset (majority of images being Nevi - NV and Melanomas - MEL) and hardware constraints limiting epochs (proof-of-concept training), the overall accuracy sits at ~53%. 
 
-Reporting: FPDF2
+*Note: The primary goal of this system is architectural completeness (UI, XAI, CBIR, Reporting) as a foundation for a CDSS, rather than achieving state-of-the-art diagnostic accuracy.*
 
-Hardware Acceleration: Apple Silicon (MPS) / CUDA supported
+| Image-only Confusion Matrix | Multimodal Confusion Matrix |
+| :---: | :---: |
+| <img src="confusion_matrix.png" width="400"> | <img src="confusion_matrix_multimodal.png" width="400"> |
 
-📊 Dataset
-The model was trained and evaluated on the ISIC 2019 Challenge Dataset, consisting of 25,331 dermoscopic images across 9 diagnostic categories:
+## 🚀 Installation & Setup
 
-Melanoma (MEL)
-
-Melanocytic nevus (NV)
-
-Basal cell carcinoma (BCC)
-
-Actinic keratosis (AK)
-
-Benign keratosis (BKL)
-
-Dermatofibroma (DF)
-
-Vascular lesion (VASC)
-
-Squamous cell carcinoma (SCC)
-
-Unknown (UNK)
-
-🚀 Installation & Usage
-Clone the repository:
-
-Bash
-git clone https://github.com/YOUR_USERNAME/Skin-Cancer-CDSS.git
-cd Skin-Cancer-CDSS
-Install dependencies:
-
-Bash
-pip install -r requirements.txt
-Run the Application:
-
-Bash
-streamlit run app.py
-📝 Disclaimer
-This system is a research project and is NOT intended for clinical use without expert supervision. All AI-generated diagnoses must be verified by a certified dermatologist.
+### 1. Clone the repository
+```bash
+git clone [https://github.com/](https://github.com/)[ΤΟ_USERNAME_ΣΟΥ]/DermAI-Skin-Lesion-CDSS.git
+cd DermAI-Skin-Lesion-CDSS
