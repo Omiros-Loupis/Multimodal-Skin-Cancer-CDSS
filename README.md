@@ -19,9 +19,14 @@ This project goes beyond simple image classification by combining **Deep Learnin
 
 ## 📸 Interface Showcase
 
-| Dashboard & Prediction | Explainability (Grad-CAM) & CBIR |
-| :---: | :---: |
-| <img src="screenshot_1.png" width="400"> | <img src="screenshot_2.png" width="400"> |
+**Dashboard & Prediction** *Clean, responsive UI built with Streamlit and custom CSS, displaying real-time predictions.*
+![Dashboard View](assets/dashboard.png)
+
+**Explainability (Grad-CAM) & CBIR** *Model transparency via Grad-CAM heatmaps, alongside historical case retrieval using 512-d cosine similarity.*
+![Grad-CAM and CBIR](assets/gradcam_cbir.png)
+
+**Automated PDF Reporting** *Dynamically generated medical reports ready for clinical use.*
+![PDF Report](assets/pdf_report.png)
 
 ## 🏗️ Architecture & Methodologies
 * **Vision Model:** `ResNet18` (Pre-trained on ImageNet, fine-tuned).
