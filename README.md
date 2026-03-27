@@ -46,6 +46,7 @@ The model was trained on the **ISIC 2019 Dataset**. Due to the heavy class imbal
 ```bash
 git clone [https://github.com/](https://github.com/)[ΤΟ_USERNAME_ΣΟΥ]/DermAI-Skin-Lesion-CDSS.git
 cd DermAI-Skin-Lesion-CDSS
+
 2. Install Dependencies
 Ensure you have Python 3.8+ installed. Run:
 
