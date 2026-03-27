@@ -46,3 +46,39 @@ The model was trained on the **ISIC 2019 Dataset**. Due to the heavy class imbal
 ```bash
 git clone [https://github.com/](https://github.com/)[ΤΟ_USERNAME_ΣΟΥ]/DermAI-Skin-Lesion-CDSS.git
 cd DermAI-Skin-Lesion-CDSS
+2. Install Dependencies
+Ensure you have Python 3.8+ installed. Run:
+
+Bash
+pip install -r requirements.txt
+3. Setup Project Structure
+Due to the size of the datasets and models, they are not included in this repository. Please ensure your local directory follows this structure before running the app:
+
+Plaintext
+├── app.py
+├── models/
+│   └── isic2019_resnet18_multimodal.pth       # Trained PyTorch model
+├── data/
+│   ├── ISIC_2019_Training_Metadata.csv        # Clinical metadata
+│   ├── features_isic2019_resnet18.pkl         # Pre-computed 512-d embeddings for CBIR
+│   └── images/                                # ISIC dataset images (for CBIR)
+4. Run the Application
+Bash
+streamlit run app.py
+📸 Screenshots
+(💡 Tip: Add a folder named assets in your repo, take 2-3 screenshots of your beautiful UI—especially the Grad-CAM heatmaps and the CBIR section—and link them here!)
+
+Example: ![Dashboard View](assets/dashboard.png)
+
+Example: ![PDF Report](assets/report.png)
+
+👨‍💻 Author
+Omiros Loupis Final-year Applied Informatics student & Business Data Analyst
+
+LinkedIn
+
+GitHub
+
+Email: omirosloupis@gmail.com
+
+Disclaimer: This system is developed for academic and research purposes only and does not constitute a certified medical diagnostic tool.
