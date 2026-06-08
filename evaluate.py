@@ -164,5 +164,5 @@ plt.tight_layout()
 # Αποθήκευση του νέου γραφήματος
 cm_path = "data/confusion_matrix_multimodal.png"
 plt.savefig(cm_path, dpi=300)
-print(f"\n✅ Ο Πίνακας Σύγχυσης αποθηκεύτηκε στο: {cm_path}")
-print("✅ Τα αναλυτικά στατιστικά αποθηκεύτηκαν στο: data/classification_report_multimodal.txt")
+print(f"\nΟ Πίνακας Σύγχυσης αποθηκεύτηκε στο: {cm_path}")
+print("Τα αναλυτικά στατιστικά αποθηκεύτηκαν στο: data/classification_report_multimodal.txt")
